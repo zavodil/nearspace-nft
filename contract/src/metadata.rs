@@ -27,6 +27,8 @@ pub struct TokenMetadata {
     pub extra: Option<String>, // anything extra the NFT wants to store on-chain. Can be stringified JSON.
     pub reference: Option<String>, // URL to an off-chain JSON file with more info.
     pub reference_hash: Option<Base64VecU8>, // Base64-encoded sha256 hash of JSON from reference field. Required if `reference` is included.
+
+    pub generation: u16
 }
 
 pub trait NonFungibleTokenMetadata {

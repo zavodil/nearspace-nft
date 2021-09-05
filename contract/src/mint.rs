@@ -2,6 +2,39 @@ use crate::*;
 
 #[near_bindgen]
 impl Contract {
+
+    #[payable]
+    pub fn nft_upgrade(&mut self,
+                        input_token_id1: TokenId,
+                        input_token_id2: TokenId,
+                        output_token_id: TokenId,
+                        approval_id: Option<U64>
+    ){
+        assert_one_yocto();
+
+        let input_token1 = self.nft_token(input_token_id1.clone()).expect("Token 1 not found");
+        assert!(input_token1.approved_account_ids.len() == 0, "Token 1 already approved on a marketplace. Abort");
+        let input_token2 = self.nft_token(input_token_id2.clone()).expect("Token 2 not found");
+        assert!(input_token2.approved_account_ids.len() == 0, "Token 2 already approved on a marketplace. Abort");
+        let output_token = self.nft_token(output_token_id.clone()).expect("Token 3 not found");
+
+        assert_eq!(output_token.owner_id, self.owner_id, "Requested token already has an owner");
+
+        let predecessor_account_id = env::predecessor_account_id();
+        assert_eq!(input_token1.owner_id, predecessor_account_id, "Upgrade your own tokens only");
+        assert_eq!(input_token2.owner_id, predecessor_account_id, "Upgrade your own tokens only");
+        assert_eq!(input_token1.metadata.generation, input_token2.metadata.generation, "Upgrade tokens with the same generation only");
+        assert_eq!(input_token1.metadata.generation + 1, output_token.metadata.generation, "Output token generation is wrong");
+
+
+        self.internal_remove(&predecessor_account_id, &input_token_id1, approval_id);
+        self.internal_remove(&predecessor_account_id, &input_token_id2, approval_id);
+        let meta = Some(format!("Upgraded from {} & {}", input_token_id1, input_token_id2));
+        let master_account_id = self.owner_id.clone();
+        self.internal_transfer(&master_account_id, &predecessor_account_id, &output_token_id, approval_id, meta);
+    }
+
+
     #[payable]
     pub fn nft_mint(
         &mut self,
@@ -11,6 +44,9 @@ impl Contract {
         receiver_id: Option<ValidAccountId>,
         token_type: Option<TokenType>,
     ) {
+        assert_eq!(self.owner_id, env::predecessor_account_id(), "Public mint disabled");
+
+        assert!(metadata.generation > 0, "Token generation is missing");
 
         let mut final_token_id = format!("{}", self.token_metadata_by_id.len() + 1);
         if let Some(token_id) = token_id {

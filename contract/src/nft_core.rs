@@ -16,6 +16,12 @@ pub trait NonFungibleTokenCore {
         memo: Option<String>,
     );
 
+    fn nft_remove(
+        &mut self,
+        token_id: TokenId,
+        approval_id: Option<U64>
+    );
+
     fn nft_transfer_payout(
         &mut self,
         receiver_id: ValidAccountId,
@@ -122,6 +128,34 @@ impl NonFungibleTokenCore for Contract {
             refund_approved_account_ids(
                 previous_token.owner_id.clone(),
                 &previous_token.approved_account_ids,
+            );
+        }
+    }
+
+    fn nft_remove(
+        &mut self,
+        token_id: TokenId,
+        approval_id: Option<U64>
+    ) {
+        let token_data = self.nft_token(token_id.clone());
+        if let Some(token_data_unwrapped) = token_data {
+            assert!(token_data_unwrapped.approved_account_ids.len() == 0, "Token already approved on a marketplace. Abort");
+
+            let sender_id = env::predecessor_account_id();
+
+            assert_eq!(sender_id.clone(), token_data_unwrapped.owner_id, "Not authorised");
+
+            if self.use_storage_fees {
+                refund_approved_account_ids(
+                    token_data_unwrapped.owner_id,
+                    &token_data_unwrapped.approved_account_ids,
+                );
+            }
+
+            self.internal_remove(
+                &sender_id,
+                &token_id,
+                approval_id
             );
         }
     }
@@ -265,8 +299,7 @@ impl NonFungibleTokenCore for Contract {
             self.tokens_by_id.insert(&token_id, &token);
 
             refund_deposit(storage_used);
-        }
-        else{
+        } else {
             token.next_approval_id += 1;
             self.tokens_by_id.insert(&token_id, &token);
         }
