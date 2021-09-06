@@ -58,7 +58,7 @@ export default function App() {
       <GlobalStyle />
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <div className="app">
-          {process.env.NODE_ENV !== 'production' && <ReactQueryDevtools initialIsOpen={true} />}
+          {process.env.NODE_ENV === 'testnet' && <ReactQueryDevtools initialIsOpen={true} />}
           <Router>
             <Navigation />
             <div className="content">
@@ -80,13 +80,14 @@ export default function App() {
                   isAuthenticated={isAuthenticated}
                   isLoading={isLoading}
                 />
+                {/*
                 <UserPage
                   path="/mint"
                   component={Mint}
                   title="Mint a Gem"
                   isAuthenticated={isAuthenticated}
                   isLoading={isLoading}
-                />
+                />*/}
                 <Page path="/faq" component={Faq} title="Faqs" />
                 <Page path="/terms" component={Terms} title="Terms and Conditions" />
                 <Page path="/not-enough-balance" component={NotEnoughBalance} title="Not Enough Balance" />

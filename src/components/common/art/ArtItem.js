@@ -195,6 +195,7 @@ ArtItem.propTypes = {
       title: PropTypes.string,
       media: PropTypes.string,
       extra: PropTypes.string,
+      generation: PropTypes.number,
     }),
   }),
   buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

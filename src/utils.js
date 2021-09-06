@@ -4,7 +4,8 @@ import getConfig from './config';
 import { NftMethods, MarketMethods } from './constants/contractMethods';
 import { APP } from './constants';
 
-const nearConfig = getConfig(process.env.NODE_ENV || 'production');
+const nearConfig = getConfig(process.env.NODE_ENV || 'testnet');
+console.log(process.env.NODE_ENV)
 
 export const getMarketContractName = (nftContractName) => `market.${nftContractName}`;
 

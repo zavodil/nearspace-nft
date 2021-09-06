@@ -117,7 +117,7 @@ const MintReview = ({ backLink, nft }) => {
       console.error(e);
 
       setIsMinting(false);
-      toast.error('Sorry 😢 There was a problem with minting and listing your gem on the market. Try again later.');
+      toast.error('Sorry 😢 There was a problem with minting and listing your NFT on the market. Try again later.');
 
       return;
     }

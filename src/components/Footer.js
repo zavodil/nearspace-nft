@@ -7,8 +7,8 @@ import { APP } from '~/constants';
 const Container = styled('footer')`
   z-index: 1;
   padding: 24px;
-  background-color: var(--plum);
-  box-shadow: 0 0 74px rgba(190, 20, 205, 0.45);
+  background-color: #0a2425;
+  box-shadow: 0 0 74px rgba(5, 44, 46, 0.45);
   font-size: 16px;
   text-align: center;
 
@@ -40,6 +40,10 @@ const Container = styled('footer')`
 export default function Footer() {
   return (
     <Container>
+
+      <a href="https://near.org">#Future is NEAR</a>
+
+        {/*
       <div className="links">
         <Link to="/terms">Terms of Service</Link>
         <Link to="/faq">FAQs</Link>
@@ -47,6 +51,8 @@ export default function Footer() {
       </div>
       <div className="bottom">{APP.NAME} is in Open Beta :)</div>
       <a href="https://discord.gg/3gCbaHbEkp">Join our Discord server!</a>
+
+      */}
     </Container>
   );
 }

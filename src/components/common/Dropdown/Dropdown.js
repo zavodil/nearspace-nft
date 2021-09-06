@@ -34,7 +34,7 @@ const Container = styled('div')`
     border: 1px solid var(--bubble-gum);
     background: var(--plum);
     visibility: hidden;
-    box-shadow: 0 0 74px rgba(190, 20, 205, 0.45);
+    box-shadow: 0 0 74px rgba(255, 209, 0, 0.45);
   }
 
   .dropdown--opened .dropdown__list {

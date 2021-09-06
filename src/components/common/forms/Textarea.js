@@ -22,7 +22,7 @@ const StyledContainer = styled('div')`
     border-bottom: var(--lavendar) 1px solid;
     background-color: rgba(var(--periwinkle-base), 0.2);
     outline: none;
-    font-family: Comfortaa, 'sans-serif';
+    font-family: Rubik, 'sans-serif';
     font-size: 16px;
     line-height: 24px;
     color: white;

@@ -6,7 +6,7 @@
     "build": "npm run build:contract && npm run build:web",
     "build:contract": "node contract/compile.js",
     "build:contract:debug": "node contract/compile.js --debug",
-    "build:web": "parcel build src/index.html --public-url ./ && cp CNAME dist/CNAME",
+    "--build:web": "parcel build src/index.html --public-url ./ && cp CNAME dist/CNAME",
     "build-dev:web": "parcel build src/index.html --public-url ./ && cp CNAME-DEV dist/CNAME",
     "dev:deploy:contract": "near dev-deploy",
     "deploy:contract": "near deploy",
@@ -15,7 +15,9 @@
     "prestart": "npm run build:contract:debug && npm run dev:deploy:contract",
     "start": "echo The app is starting! It will automatically open in your browser when ready && env-cmd -f ./neardev/dev-account.env parcel src/index.html --open",
     "dev": "nodemon --watch contract/src -e rs --exec \"npm run start\"",
-    "test": "npm run build:contract:debug && cd contract && cargo test -- --nocapture && cd .. && jest test --runInBand"
+    "test": "npm run build:contract:debug && cd contract && cargo test -- --nocapture && cd .. && jest test --runInBand",
+    "build:web:testnet": "cross-env NODE_ENV=testnet && rm -rf testnet && env-cmd -f ./neardev/dev-account.env parcel build src/index.html --public-url ./ && mv dist testnet",
+    "build:web": "cross-env NODE_ENV=mainnet && rm -rf mainnet && parcel build src/index.html --public-url ./ && mv dist mainnet"
   },
   "devDependencies": {
     "@babel/core": "~7.14.0",
@@ -43,6 +45,7 @@
     "shelljs": "~0.8.4"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "axios": "^0.21.1",
     "big.js": "^6.1.1",
     "classnames": "^2.3.1",

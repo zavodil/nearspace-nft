@@ -19,7 +19,7 @@ const StyledContainer = styled('div')`
     top: 0;
     ${(props) => props.placement}: 0;
     padding: ${(props) => (props.isSmall ? '13px 12px' : '16px 14px')};
-    font-family: Comfortaa, 'sans-serif';
+    font-family: Rubik, 'sans-serif';
     font-size: ${(props) => (props.isSmall ? '13px' : '18px')};
     line-height: ${(props) => (props.isSmall ? '18px' : '24px')};
     color: darkgray;

@@ -1,10 +1,14 @@
-[Pluminite is online](https://pluminite.com/)
+[NEAR SPACE](https://nft.nearspace.info/)
+
 ==================
 
-Project description
-==================
+[Pluminite](https://github.com/zavodil/pluminite-ui) fork.
 
-Coming soon
+Composable NFTs on NEAR:
+
+- Get RARE NFT for free by supporting NEAR 
+- Upgrade 2 NFT and get ONE an even RARER NFT: `rare` => `epic` => `legendary`
+- The rarest NFTs provide additional bonuses
 
 
 How to install pluminite-ui

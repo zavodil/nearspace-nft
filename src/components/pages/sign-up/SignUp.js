@@ -54,7 +54,7 @@ export default function SignUp() {
         )}
       </Button>
       <p className="trouble">
-        Having trouble making a wallet? Email us at <a href="mailto:info@pluminite.com">info@pluminite.com</a>.
+        Having trouble making a wallet? Email us at <a href="mailto:info@nearspace.info">info@nearspace.info</a>.
       </p>
     </Container>
   );

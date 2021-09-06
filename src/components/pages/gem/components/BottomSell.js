@@ -52,10 +52,10 @@ const BottomSell = ({ gem }) => {
 
     try {
       await listForSale(gem.token_id, parseNearAmount(sellPrice));
-      toast.success('Success! Your gem is on the marketplace.');
+      toast.success('Success! Your NFT is on the marketplace.');
     } catch (error) {
       console.error(error);
-      toast.error('Sorry 😢 There was an error in listing your gem on the market. Please, try again later.');
+      toast.error('Sorry 😢 There was an error in listing your NFT on the market. Please, try again later.');
     }
   };
 

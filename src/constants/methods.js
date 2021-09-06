@@ -13,10 +13,10 @@ export const PAYABLE_METHODS = {
 export const PAYABLE_METHODS_DESCRIPTIONS = {
   [PAYABLE_METHODS.MINT_AND_LIST_NFT]: 'minting and listing a gem',
   // todo: change description once offers can be made below 'buy now' price
-  [PAYABLE_METHODS.OFFER]: 'buying a gem',
+  [PAYABLE_METHODS.OFFER]: 'buying NFT',
   [PAYABLE_METHODS.PAY_STORAGE]: 'paying storage fee',
-  [PAYABLE_METHODS.LIST]: 'listing a gem on the market',
-  [PAYABLE_METHODS.NFT_TRANSFER]: 'transfer a gem',
+  [PAYABLE_METHODS.LIST]: 'listing NFT on the market',
+  [PAYABLE_METHODS.NFT_TRANSFER]: 'transfer NFT',
 };
 
 export const PAYABLE_METHODS_SUCCESS_MESSAGES = {
@@ -24,6 +24,6 @@ export const PAYABLE_METHODS_SUCCESS_MESSAGES = {
   // todo: change message once offers can be made below 'buy now' price
   [PAYABLE_METHODS.OFFER]: <BuySuccessMessage />,
   [PAYABLE_METHODS.PAY_STORAGE]: 'Thank you! Storage fee has been paid!',
-  [PAYABLE_METHODS.LIST]: 'Your gem has been listed on the market!',
-  [PAYABLE_METHODS.NFT_TRANSFER]: 'Your gem has been transfered!',
+  [PAYABLE_METHODS.LIST]: 'Your NFT has been listed on the market!',
+  [PAYABLE_METHODS.NFT_TRANSFER]: 'Your NFT has been transfered!',
 };

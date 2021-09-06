@@ -34,8 +34,9 @@ const ArtItemPriced = ({ nft, bidAvailable, ...props }) => {
 
   const isItemOwnedByUser = () => nft?.owner_id === marketContract.account.accountId;
 
+
   return (
-    <ArtItem
+      <ArtItem
       buttonText={isItemOwnedByUser() ? null : `Buy for ${getNextBidNearsFormatted(nft)}Ⓝ`}
       isButtonDisabled={!bidAvailable}
       onButtonClick={processBid}

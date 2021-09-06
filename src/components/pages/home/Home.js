@@ -17,6 +17,8 @@ import { DiamondIcon } from '~/components/common/icons';
 import { QUERY_KEYS, APP } from '~/constants';
 import { Loading } from '~/components/common/utils';
 
+import defaultLogo from '~/assets/images/nearspace.png';
+
 const Container = styled('div')`
   padding: 15px;
   max-width: 1200px;
@@ -70,9 +72,16 @@ const Container = styled('div')`
 
   .desc {
     margin-bottom: 20px;
-    font-size: 24px;
+    //font-size: 24px;
     font-weight: 300;
     line-height: 36px;
+    color: #61cdd0;
+    text-shadow: -2px -1px #192223, 1px 2px #192223, 2px 1px #192223, -1px -2px #192223;
+    font-size: 40px;
+  }
+  
+  .hidden {
+    display: none;
   }
 
   .pop-up {
@@ -124,24 +133,32 @@ export default function Home() {
     }
   );
 
+    let items = data && data?.length ?  (data.map((sale) => {
+        return <ArtItemPriced key={sale.token_id} nft={sale} isLink isFromIpfs />
+    })) : null;
+
   return (
     <Container>
       <div className="description-container">
-        <DisplayText isBig>RARE ART GEMS</DisplayText>
-        <div className="desc">Create, buy, and sell NFT&apos;s with Cryptocurrency</div>
-        <div className="diamond">
+          <img src={defaultLogo} alt="NearSpace" />
+        <DisplayText isBig>NEARSPACE NFT</DisplayText>
+        <div className="desc">First Composable NFT on NEAR </div>
+          {/*<div className="diamond">
           <DiamondIcon />
-        </div>
+        </div>*/}
       </div>
       <div className="items-container">
         <div className="items">
-          {data?.length && data.map((sale) => <ArtItemPriced key={sale.token_id} nft={sale} isLink isFromIpfs />)}
+          {items}
           {!data?.length && !isFetching && (
             <div className="no-nfts">
-              There is nothing here 😢 <br />
+                <p>There is nothing here yet.</p>
+                <p>Win NFT during out next promotions and put them on sale here. </p>
+                {/*
               <Button isPrimary isSmall>
                 <Link to="/mint">Mint a Gem</Link>
               </Button>
+              */}
             </div>
           )}
         </div>
@@ -152,7 +169,7 @@ export default function Home() {
         )}
         {isFetching && <Loading />}
       </div>
-      <div className="pop-up">{user ? <MintPlus /> : <Contribute />}</div>
+      <div className="pop-up hidden">{user ? <MintPlus /> : <Contribute />}</div>
     </Container>
   );
 }

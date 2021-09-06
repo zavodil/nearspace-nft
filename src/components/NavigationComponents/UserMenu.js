@@ -60,9 +60,9 @@ const UserMenu = () => {
   return (
     <StyledContainer>
       <Dropdown dropdownBase={AccountDisplay} title={`${user.accountId}`} stretchable>
-        <Link className="nav__link nav__link--dropdown" to="/mint">
+        {/*<Link className="nav__link nav__link--dropdown" to="/mint">
           Mint a Gem
-        </Link>
+        </Link>*/}
         <Link className="nav__link nav__link--dropdown" to="/profile">
           View profile
         </Link>

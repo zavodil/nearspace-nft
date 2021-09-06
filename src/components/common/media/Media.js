@@ -61,6 +61,7 @@ const Media = forwardRef(function MediaWithRef({ src, alt, media, ...rest }, ref
     }
   }, [src, media]);
 
+
   return (
     <StyledContainer isMediaLoaded={isMediaLoaded} isMediaLoading={isMediaLoading}>
       {src && src.startsWith('data:video') ? (

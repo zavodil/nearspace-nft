@@ -26,11 +26,10 @@ const StyledButton = styled('button')`
 
   &.button--primary {
     border-color: var(--lavendar);
-    background-color: var(--lavendar);
-    color: var(--plum);
+    background-color: #0a2425;
+    color: var(--lavendar);
 
     :not(.button--disabled):hover {
-      background-color: var(--pink);
       box-shadow: var(--shadow-primary);
     }
   }
@@ -40,7 +39,6 @@ const StyledButton = styled('button')`
     color: var(--lavendar);
 
     :not(.button--disabled):hover {
-      background-color: #320d57;
       box-shadow: var(--shadow-secondary);
     }
   }

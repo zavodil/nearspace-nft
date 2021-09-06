@@ -148,6 +148,14 @@ function GemOriginal({ location: { prevPathname } }) {
     BottomComponent = BottomSell;
   }
 
+  let extra;
+  let mediaHighRes;
+
+  if (gem?.metadata?.extra) {
+    extra = JSON.parse(gem.metadata.extra);
+    mediaHighRes = extra.media_highres;
+  }
+
   return (
     <Container isBottomSell={BottomComponent === BottomSell}>
       <Portal>
@@ -156,7 +164,7 @@ function GemOriginal({ location: { prevPathname } }) {
           <CloseButton className="gem-close" processCLick={goBack} />
         </GemHeader>
       </Portal>
-      <MediaFromIpfs media={gem?.metadata?.media} alt={gem?.metadata?.title} />
+      <MediaFromIpfs media={mediaHighRes || gem?.metadata?.media} alt={gem?.metadata?.title} />
       <BottomComponent gem={gem} gemOnSale={gemOnSale} />
     </Container>
   );

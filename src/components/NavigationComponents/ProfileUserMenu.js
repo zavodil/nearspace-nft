@@ -41,9 +41,10 @@ const ProfileUserMenu = () => {
         <Link className="nav__link nav__link--dropdown" to="/">
           Back to marketplace
         </Link>
+        {/*
         <Link className="nav__link nav__link--dropdown" to="/mint">
           Mint a Gem
-        </Link>
+        </Link>*/}
         <div className="nav__link nav__link--dropdown">
           Balance: <Balance />
         </div>

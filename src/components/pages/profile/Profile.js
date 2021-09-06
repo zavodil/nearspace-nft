@@ -205,10 +205,12 @@ export default function Profile() {
           width="62"
           height="62"
         />
+          {/*
         <div className="summary-block">
           <span className="summary-block-top">{supplyForCreator || '0'}</span>
           <span className="summary-block-bottom">Pieces Created</span>
         </div>
+        */}
         <div className="summary-block">
           <Balance className="summary-block-top" precision={2} />
           <span className="summary-block-bottom">Your Funds</span>
@@ -243,9 +245,11 @@ export default function Profile() {
                   ) : (
                     <div className="no-nfts">
                       You don&apos;t own any gems yet. <br />
+                        {/*
                       <Button isPrimary isSmall>
                         <Link to="/mint">Mint a Gem</Link>
                       </Button>
+                      */}
                     </div>
                   )}
                 </div>
@@ -257,7 +261,8 @@ export default function Profile() {
                 {isFetching && <Loading />}
               </>
             ),
-          },
+          }
+          /*,
           {
             title: 'Gems I made',
             content: (
@@ -302,7 +307,7 @@ export default function Profile() {
                 {forCreatorIsFetching && <Loading />}
               </>
             ),
-          },
+          },*/
         ]}
       />
     </Container>

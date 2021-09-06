@@ -13,7 +13,7 @@ const StyledContainer = styled('div')`
 
   &.primary {
     background-color: var(--plum);
-    box-shadow: 0 -36px 36px rgba(190, 20, 205, 0.22);
+    box-shadow: 0 -36px 36px rgba(5, 44, 46, 0.22);
   }
 
   &.secondary {

@@ -1,5 +1,5 @@
 const APP = {
-  NAME: 'Pluminite',
+  NAME: 'NEAR Space',
 
   DEFAULT_ROYALTY: 5,
   MIN_CREATOR_ROYALTY: 0,

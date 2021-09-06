@@ -17,24 +17,25 @@ const StyledContainer = styled('div')`
     letter-spacing: 4px;
     line-height: ${(props) => (props.isBig ? '105px' : 'normal')};
     margin: 0;
+    color: #192223;
   }
 
   .display-text-shadow-1 {
-    text-shadow: -1px 0 var(--pink), 0 1px var(--pink), 1px 0 var(--pink), 0 -1px var(--pink);
+    text-shadow: -1px 0 var(--nearspace), 0 1px var(--nearspace), 1px 0 var(--nearspace), 0 -1px var(--nearspace);
   }
 
   .display-text-shadow-2 {
     position: absolute;
     top: 0;
     left: 0;
-    text-shadow: 0 0 14px rgba(186, 13, 215, 0.31);
+    text-shadow: 0 0 14px rgba(0, 177, 177, 0.31);
   }
 
   @media (min-width: 767px) {
     margin: 0 auto 20px;
 
     .display-text {
-      font-size: ${(props) => (props.isBig ? '165px' : '63px')};
+      font-size: ${(props) => (props.isBig ? '80px' : '30px')};
       letter-spacing: 13px;
       line-height: normal;
     }

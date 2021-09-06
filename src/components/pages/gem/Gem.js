@@ -176,7 +176,7 @@ function Gem({ location: { prevPathname } }) {
       mediaLowRes = JSON.parse(gem.metadata.extra).media_lowres;
     }
 
-    return mediaLowRes || gem?.metadata?.media;
+    return  gem?.metadata?.media || mediaLowRes;
   };
 
   const { data: imageData } = useQuery(
@@ -214,6 +214,14 @@ function Gem({ location: { prevPathname } }) {
     return JSON.parse(gem?.metadata?.extra).creator_id;
   };
 
+  const getGeneration = () => {
+    if (!gem?.metadata?.generation) {
+      return undefined;
+    }
+
+    return gem?.metadata?.generation;
+  };
+
   if (gem === null) {
     return <Redirect to="/404" />;
   }
@@ -241,8 +249,9 @@ function Gem({ location: { prevPathname } }) {
       </Portal>
       <TitleText className="gem-title">{gem?.metadata?.title || 'No title provided'}</TitleText>
       <div className="users">
-        <p>by {getCreator() || '?'}</p>
-        <p>owned by {gem?.owner_id || '?'}</p>
+        {/* <p>by {getCreator() || '?'}</p> */}
+        <p>Generation: {getGeneration() || '?'}</p>
+        <p>Owned by {gem?.owner_id || '?'}</p>
       </div>
       <Tabs
         tabsArray={[
